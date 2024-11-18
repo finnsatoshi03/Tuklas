@@ -91,6 +91,9 @@ a {
 
 .container {
   position: relative;
+}
+
+.home {
   width: 100vw;
   height: 100vh;
 }
