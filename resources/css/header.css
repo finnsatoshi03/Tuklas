@@ -1,0 +1,86 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: transparent;
+  transition: background-color 0.3s ease, padding 0.3s ease;
+}
+
+.container {
+  padding-top: 5rem; /* Add padding to prevent content from being hidden behind fixed header */
+}
+
+header > nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  transition: padding 0.3s ease;
+}
+
+.logo,
+.nav-items {
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.nav-items {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.explore-btn {
+  background-color: var(--color-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* Scrolled state styles */
+header.scrolled {
+  background-color: var(--color-primary);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header.scrolled > nav {
+  padding: 0.5rem 0;
+}
+
+header.scrolled .logo,
+header.scrolled .nav-items {
+  color: var(--color-dark-blue);
+}
+
+header.scrolled .explore-btn {
+  background-color: var(--color-yellow);
+  color: var(--color-dark-blue);
+}
+
+/* Responsive adjustments */
+@media (min-width: 576px) {
+  .container {
+    padding-top: 6rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-top: 7rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    padding-top: 8rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    padding-top: 9rem;
+  }
+}
