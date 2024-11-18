@@ -1,6 +1,7 @@
 @import "./header.css";
 @import "./background.css";
 @import "./hero.css";
+@import "../../pages/about/css/about.css";
 
 :root {
   --font-sans: "Jost", sans-serif;
@@ -8,7 +9,7 @@
 
   --color-primary: #d4eefb;
   --color-dark-blue: #173d7c;
-  --color-yellow: #fae9b5;
+  --color-yellow: #f5db50;
 }
 
 *,
