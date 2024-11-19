@@ -1,0 +1,70 @@
+.discover {
+  position: relative;
+  background-color: var(--color-primary);
+  padding-top: 60px;
+  padding-bottom: 60px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.discover > img {
+  position: absolute;
+  bottom: -5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+}
+
+.wave-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.wave-container svg {
+  width: 100%;
+  height: 120px;
+  display: block;
+  transform: rotate(180deg);
+  margin-top: -10px;
+}
+
+.discover-content {
+  position: relative;
+  z-index: 2;
+  padding: 10rem 0;
+}
+
+.discover-content h2 {
+  font-size: 3rem;
+  color: var(--color-dark-blue);
+  margin: 0;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .discover-content h2 {
+    font-size: 2rem;
+  }
+
+  .wave-container svg {
+    height: 80px;
+  }
+
+  .discover-content {
+    margin-top: 20px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .discover-content {
+    padding: 7rem 0;
+    overflow: hidden;
+  }
+  .discover > img {
+    width: 60%;
+  }
+}
