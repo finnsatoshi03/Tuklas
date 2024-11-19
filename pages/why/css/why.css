@@ -1,0 +1,118 @@
+.why-content {
+  margin: 10rem 0 5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.why-content > h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: red;
+}
+
+.why-content > p {
+  width: 75%;
+}
+
+.why-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.why-images-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.image-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.why-images img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: opacity 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.hover-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.why-images-item:hover .main-image {
+  opacity: 0;
+}
+
+.why-images-item:hover .hover-image {
+  opacity: 1;
+}
+
+.why-images-item h2 {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.why-element-1 {
+  position: absolute;
+  top: 10rem;
+  left: -5rem;
+  width: 250px;
+}
+
+.why-element-2 {
+  position: absolute;
+  top: 1rem;
+  left: -5rem;
+  width: 200px;
+}
+
+.why-element-3 {
+  position: absolute;
+  top: -1rem;
+  left: -5rem;
+  width: 120px;
+}
+
+.why-element-4 {
+  position: absolute;
+  top: -3rem;
+  right: -5rem;
+  width: 250px;
+}
+
+.why-element-5 {
+  position: absolute;
+  top: -10rem;
+  right: -5rem;
+  width: 200px;
+}
+
+.why-element-6 {
+  position: absolute;
+  top: 5rem;
+  right: -5rem;
+  width: 120px;
+}
+
+[class*="why-element-"] {
+  transition: transform 0.2s ease-out, opacity 0.3s ease-out;
+  will-change: transform, opacity;
+}

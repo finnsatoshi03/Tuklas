@@ -2,6 +2,7 @@
 @import "./background.css";
 @import "./hero.css";
 @import "../../pages/about/css/about.css";
+@import "../../pages/why/css/why.css";
 
 :root {
   --font-sans: "Jost", sans-serif;
