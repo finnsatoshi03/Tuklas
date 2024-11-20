@@ -8,6 +8,7 @@
 @import "../../pages/vision/vision.css";
 @import "../../pages/history/history.css";
 @import "../../pages/origin/origin.css";
+@import "../../pages/footer/footer.css";
 
 :root {
   --font-sans: "Roboto Flex", sans-serif;
