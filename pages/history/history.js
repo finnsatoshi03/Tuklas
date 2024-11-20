@@ -1,149 +1,80 @@
-// document.addEventListener("DOMContentLoaded", () => {
-//   const historySection = document.querySelector(".history");
-//   const historyItems = document.querySelector(".history-items");
-//   const items = document.querySelectorAll(".history-item");
-//   let currentIndex = 0;
-//   let isScrolling = false;
-//   let isSectionInView = false;
-//   let lastWheelTime = Date.now();
-//   const scrollDebounceTime = 50;
+// Get the vision section and cloud elements
+const visionSection = document.querySelector(".history");
+const visionLeftClouds = document.querySelectorAll(
+  ".history-element-6, .history-element-7, .history-element-8, .history-element-9"
+);
+const visionRightClouds = document.querySelectorAll(
+  ".history-element-1, .history-element-2, .history-element-3, .history-element-4, .history-element-5"
+);
 
-//   // Set the first item as active initially
-//   items[0].classList.add("active");
+// Define movement distances and delays for vision elements
+const visionCloudConfig = {
+  "history-element-1": { distance: -150, delay: 0 },
+  "history-element-2": { distance: -210, delay: 0.2 },
+  "history-element-3": { distance: -170, delay: 0.4 },
+  "history-element-4": { distance: -190, delay: 0.2 },
+  "history-element-5": { distance: -230, delay: 0.5 },
+  "history-element-6": { distance: 230, delay: 0.1 },
+  "history-element-7": { distance: 210, delay: 0.3 },
+  "history-element-8": { distance: 250, delay: 0.5 },
+  "history-element-9": { distance: 220, delay: 0.3 },
+};
 
-//   // Check if history section is in viewport center
-//   const isInCenter = () => {
-//     const historySectionRect = historySection.getBoundingClientRect();
-//     const windowHeight = window.innerHeight;
-//     const elementCenter =
-//       historySectionRect.top + historySectionRect.height / 2;
-//     const viewportCenter = windowHeight / 2;
-//     const centerThreshold = 200;
+// Function to calculate eased value
+function easeInOutQuad(t) {
+  return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+}
 
-//     return Math.abs(elementCenter - viewportCenter) < centerThreshold;
-//   };
+// Function to animate vision clouds
+function animateVisionClouds() {
+  const visionRect = visionSection.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
 
-//   // Scroll to specific item with improved handling
-//   const scrollToItem = (index) => {
-//     if (index >= 0 && index < items.length) {
-//       items.forEach((item) => item.classList.remove("active"));
-//       items[index].classList.add("active");
+  // Start animation when the section is entering the viewport
+  if (visionRect.top <= windowHeight && visionRect.bottom >= 0) {
+    // Calculate scroll progress relative to the vision section
+    const sectionProgress =
+      (windowHeight - visionRect.top) / (windowHeight + visionRect.height);
+    // Clamp the progress between 0 and 1
+    const baseProgress = Math.max(0, Math.min(1, sectionProgress));
 
-//       historyItems.scrollTo({
-//         left: items[index].offsetLeft,
-//         behavior: "smooth",
-//       });
+    // Apply animations to all clouds
+    [...visionLeftClouds, ...visionRightClouds].forEach((cloud) => {
+      const className = Array.from(cloud.classList).find((name) =>
+        name.startsWith("history-element-")
+      );
+      if (className && visionCloudConfig[className]) {
+        const { distance, delay } = visionCloudConfig[className];
 
-//       currentIndex = index;
+        // Adjust progress based on delay
+        let adjustedProgress = Math.max(0, baseProgress - delay);
+        // Normalize the progress to 0-1 range
+        adjustedProgress = Math.min(1, adjustedProgress / (1 - delay));
 
-//       setTimeout(() => {
-//         isScrolling = false;
-//       }, 300);
-//     }
-//   };
+        // Apply easing to make movement smoother
+        const easedProgress = easeInOutQuad(adjustedProgress);
 
-//   // Improved wheel event handler with proper boundary scrolling
-//   const handleScroll = (e) => {
-//     if (!isSectionInView || !isInCenter()) return;
+        // Calculate and apply movement
+        const moveDistance = easedProgress * distance;
+        cloud.style.transform = `translateX(${moveDistance}px)`;
+      }
+    });
+  }
+}
 
-//     const currentTime = Date.now();
-//     const scrollingUp = e.deltaY < 0;
-//     const scrollingDown = e.deltaY > 0;
+// Add scroll event listener with throttling
+let ticking = false;
+window.addEventListener("scroll", () => {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      animateVisionClouds();
+      ticking = false;
+    });
+    ticking = true;
+  }
+});
 
-//     // Allow general scroll at boundaries
-//     if (
-//       (scrollingUp && currentIndex === 0) ||
-//       (scrollingDown && currentIndex === items.length - 1)
-//     ) {
-//       return; // Don't prevent default, allow normal scroll
-//     }
-
-//     // Prevent default only for non-boundary conditions
-//     e.preventDefault();
-
-//     // Check debounce time
-//     if (currentTime - lastWheelTime < scrollDebounceTime) {
-//       return;
-//     }
-
-//     // Handle slider navigation
-//     if (scrollingDown && currentIndex < items.length - 1) {
-//       scrollToItem(currentIndex + 1);
-//     } else if (scrollingUp && currentIndex > 0) {
-//       scrollToItem(currentIndex - 1);
-//     }
-
-//     lastWheelTime = currentTime;
-//   };
-
-//   // Improved Intersection Observer
-//   const observer = new IntersectionObserver(
-//     (entries) => {
-//       entries.forEach((entry) => {
-//         isSectionInView = entry.isIntersecting;
-
-//         if (entry.isIntersecting) {
-//           historySection.classList.add("scrolling-active");
-//           window.addEventListener("wheel", handleScroll, { passive: false });
-//         } else {
-//           historySection.classList.remove("scrolling-active");
-//           window.removeEventListener("wheel", handleScroll);
-//         }
-//       });
-//     },
-//     {
-//       threshold: 0.5,
-//     }
-//   );
-
-//   observer.observe(historySection);
-
-//   // Keyboard navigation
-//   window.addEventListener("keydown", (e) => {
-//     if (isSectionInView && isInCenter()) {
-//       if (
-//         (e.key === "ArrowRight" || e.key === "ArrowDown") &&
-//         currentIndex < items.length - 1
-//       ) {
-//         e.preventDefault();
-//         scrollToItem(currentIndex + 1);
-//       } else if (
-//         (e.key === "ArrowLeft" || e.key === "ArrowUp") &&
-//         currentIndex > 0
-//       ) {
-//         e.preventDefault();
-//         scrollToItem(currentIndex - 1);
-//       }
-//     }
-//   });
-
-//   // Touch handling
-//   let touchStartX = 0;
-//   let touchStartY = 0;
-//   const touchThreshold = 30;
-
-//   historySection.addEventListener("touchstart", (e) => {
-//     touchStartX = e.changedTouches[0].screenX;
-//     touchStartY = e.changedTouches[0].screenY;
-//   });
-
-//   historySection.addEventListener("touchend", (e) => {
-//     if (!isSectionInView || !isInCenter()) return;
-
-//     const touchEndX = e.changedTouches[0].screenX;
-//     const touchEndY = e.changedTouches[0].screenY;
-//     const differenceX = touchStartX - touchEndX;
-//     const differenceY = touchStartY - touchEndY;
-
-//     if (
-//       Math.abs(differenceX) > Math.abs(differenceY) &&
-//       Math.abs(differenceX) > touchThreshold
-//     ) {
-//       if (differenceX > 0 && currentIndex < items.length - 1) {
-//         scrollToItem(currentIndex + 1);
-//       } else if (differenceX < 0 && currentIndex > 0) {
-//         scrollToItem(currentIndex - 1);
-//       }
-//     }
-//   });
-// });
+// Initial check in case the section is already in view when page loads
+document.addEventListener("DOMContentLoaded", () => {
+  animateVisionClouds();
+});

@@ -115,8 +115,10 @@
 
 .leaf-left-1,
 .leaf-left-2,
+.leaf-left-3,
 .leaf-right-1,
-.leaf-right-2 {
+.leaf-right-2,
+.leaf-right-3 {
   z-index: -1;
   position: absolute;
 }
@@ -147,15 +149,52 @@
   left: -20px;
   top: 50%;
 }
+.leaf-left-3 {
+  left: -20px;
+  top: 70%;
+}
+
 .leaf-right-1 {
   right: -20px;
   top: 20%;
   transform: scaleX(-1);
 }
-
 .leaf-right-2 {
   right: -5px;
-  top: 70%;
+  top: 60%;
+  transform: scaleX(-1);
+}
+.leaf-right-3 {
+  right: -5px;
+  top: 80%;
+  transform: scaleX(-1);
+}
+
+.bird-1,
+.bird-2,
+.bird-3,
+.bird-4 {
+  position: absolute;
+  z-index: -1;
+  opacity: 0.2;
+  width: 100px;
+}
+.bird-1 {
+  top: 0;
+  left: 10%;
+}
+.bird-2 {
+  top: 5%;
+  left: 15%;
+  transform: scaleX(-1);
+}
+.bird-3 {
+  top: 3%;
+  left: 27%;
+}
+.bird-4 {
+  top: 2%;
+  right: 15%;
   transform: scaleX(-1);
 }
 
