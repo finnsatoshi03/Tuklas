@@ -9,18 +9,15 @@ const visionRightClouds = document.querySelectorAll(
 
 // Define movement distances and delays for vision elements
 const visionCloudConfig = {
-  // Right side clouds (negative values move left)
-  "vision-element-1": { distance: -120, delay: 0 },
-  "vision-element-2": { distance: -180, delay: 0.2 },
-  "vision-element-3": { distance: -140, delay: 0.4 },
-  "vision-element-4": { distance: -160, delay: 0.6 },
-  "vision-element-5": { distance: -200, delay: 0.8 },
-
-  // Left side clouds (positive values move right)
-  "vision-element-6": { distance: 200, delay: 0.1 },
-  "vision-element-7": { distance: 180, delay: 0.3 },
-  "vision-element-8": { distance: 220, delay: 0.5 },
-  "vision-element-9": { distance: 190, delay: 0.7 },
+  "vision-element-1": { distance: -150, delay: 0 },
+  "vision-element-2": { distance: -210, delay: 0.2 },
+  "vision-element-3": { distance: -170, delay: 0.4 },
+  "vision-element-4": { distance: -190, delay: 0.2 },
+  "vision-element-5": { distance: -230, delay: 0.5 },
+  "vision-element-6": { distance: 230, delay: 0.1 },
+  "vision-element-7": { distance: 210, delay: 0.3 },
+  "vision-element-8": { distance: 250, delay: 0.5 },
+  "vision-element-9": { distance: 220, delay: 0.3 },
 };
 
 // Function to calculate eased value

@@ -1,11 +1,22 @@
 .vision {
-  max-width: 1200px;
-  margin: 5rem auto;
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
+}
+
+.vision::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-primary);
+  /* opacity: 0.5; */
+  z-index: -2;
 }
 
 .vision > h2 {
+  padding-top: 7rem;
   font-size: 3.5rem;
   text-transform: uppercase;
   color: var(--color-dark-blue);
@@ -17,6 +28,8 @@
   grid-template-columns: 0.8fr 1fr;
   gap: 2rem;
   margin-top: 3rem;
+  max-width: 1200px;
+  margin: 5rem auto;
 }
 
 .vision-content img {
@@ -31,7 +44,8 @@
 }
 
 .province-content {
-  margin-top: 7rem;
+  max-width: 1200px;
+  margin: 7rem auto 0 auto;
 }
 
 .province-content h2 {
@@ -62,6 +76,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   margin-top: 1rem;
+  padding-bottom: 20rem;
 }
 
 .province-content-2 > img {
@@ -83,17 +98,6 @@
   object-fit: cover;
 }
 
-@media (max-width: 768px) {
-  .vision-content,
-  .province-content-1 {
-    grid-template-columns: 1fr;
-  }
-
-  .province-content-2 {
-    grid-template-columns: 1fr;
-  }
-}
-
 /* Vision elements (clouds) */
 .vision-element-1,
 .vision-element-2,
@@ -106,6 +110,7 @@
 .vision-element-9 {
   position: absolute;
   z-index: -1;
+  opacity: 0.2;
   transition: transform 0.3s ease-out;
 }
 
@@ -163,4 +168,25 @@
   top: 65%;
   left: 35px;
   width: 190px;
+}
+
+.vision-footer-element {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  z-index: -1;
+  opacity: 0.2;
+}
+
+@media (max-width: 768px) {
+  .vision-content,
+  .province-content-1 {
+    grid-template-columns: 1fr;
+  }
+
+  .province-content-2 {
+    grid-template-columns: 1fr;
+    padding-bottom: 10rem;
+  }
 }
