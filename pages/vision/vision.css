@@ -197,4 +197,7 @@
     grid-template-columns: 1fr;
     padding-bottom: 10rem;
   }
+  .province-content-2 .vision-img-2 {
+    grid-area: auto;
+  }
 }
