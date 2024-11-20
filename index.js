@@ -1,6 +1,7 @@
 import "./pages/home/home.js";
 import "./pages/why/why.js";
 import "./pages/vision/vision.js";
+import "./pages/history/history.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector("header");
