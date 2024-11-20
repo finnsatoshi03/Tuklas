@@ -62,11 +62,57 @@ function animateVisionClouds() {
   }
 }
 
+// Function to add scroll animation to history items
+function animateHistoryItems() {
+  const historyItems = document.querySelectorAll(".history-item");
+
+  historyItems.forEach((item) => {
+    const itemRect = item.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    // Check if the item is partially in view
+    if (itemRect.top < windowHeight && itemRect.bottom >= 0) {
+      // Determine if the item is on the left or right side
+      const isLeftSide =
+        item.classList.contains("history-item-1") ||
+        item.classList.contains("history-item-3");
+
+      // Calculate visibility progress
+      const progress = 1 - itemRect.top / windowHeight + 0.5;
+      const clampedProgress = Math.max(0, Math.min(1, progress));
+
+      // Get image and description elements
+      const image = item.querySelector("img");
+      const description = item.querySelector(".history-description");
+
+      // Apply animations based on visibility progress
+      if (isLeftSide) {
+        // Left side items slide in from the left
+        image.style.transform = `translateX(${(1 - clampedProgress) * -100}%)`;
+        description.style.transform = `translateX(${
+          (1 - clampedProgress) * 100
+        }%)`;
+      } else {
+        // Right side items slide in from the right
+        image.style.transform = `translateX(${(1 - clampedProgress) * 100}%)`;
+        description.style.transform = `translateX(${
+          (1 - clampedProgress) * -100
+        }%)`;
+      }
+
+      // Fade in effect
+      image.style.opacity = clampedProgress;
+      description.style.opacity = clampedProgress;
+    }
+  });
+}
+
 // Add scroll event listener with throttling
 let ticking = false;
 window.addEventListener("scroll", () => {
   if (!ticking) {
     requestAnimationFrame(() => {
+      animateHistoryItems();
       animateVisionClouds();
       ticking = false;
     });
@@ -76,5 +122,6 @@ window.addEventListener("scroll", () => {
 
 // Initial check in case the section is already in view when page loads
 document.addEventListener("DOMContentLoaded", () => {
+  animateHistoryItems();
   animateVisionClouds();
 });
