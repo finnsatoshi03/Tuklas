@@ -6,10 +6,12 @@
 @import "../../pages/discover/discover.css";
 @import "../../pages/destination/destination.css";
 @import "../../pages/vision/vision.css";
+@import "../../pages/history/history.css";
 
 :root {
   --font-sans: "Jost", sans-serif;
   --font-cursive: "Indie Flower", cursive;
+  --font-serif: "Crimson Text", serif;
 
   --color-primary: #d4eefb;
   --color-dark-blue: #173d7c;
