@@ -5,6 +5,7 @@
 @import "../../pages/why/css/why.css";
 @import "../../pages/discover/discover.css";
 @import "../../pages/destination/destination.css";
+@import "../../pages/vision/vision.css";
 
 :root {
   --font-sans: "Jost", sans-serif;

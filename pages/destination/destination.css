@@ -4,19 +4,19 @@
     center;
   background-size: cover;
   color: white;
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
-  gap: 2rem;
+  gap: 10rem;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .destinations > .destinations-header {
-  padding-top: 5rem;
+  padding-top: 10rem;
 }
 
 .destinations > .destination-items {
-  padding-bottom: 5rem;
+  padding-bottom: 10rem;
 }
 
 .destinations::before {
@@ -54,12 +54,19 @@
   gap: 1rem;
 }
 
+@media (max-width: 768px) {
+  .destination-items {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .destination-image-container {
   position: relative;
   width: 100%;
   height: 300px;
   border-radius: 10px;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .destination-image-container img {
