@@ -1,0 +1,88 @@
+.destinations {
+  position: relative;
+  background: url("../../resources/images/discover-bg.jpg") no-repeat center
+    center;
+  background-size: cover;
+  color: white;
+  height: 100vh;
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.destinations > .destinations-header {
+  padding-top: 5rem;
+}
+
+.destinations > .destination-items {
+  padding-bottom: 5rem;
+}
+
+.destinations::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.destinations h2,
+.destinations p,
+.destinations .destination-items {
+  position: relative;
+  z-index: 2;
+}
+
+.destinations-header > p {
+  display: flex;
+  gap: 0.5rem;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+}
+
+.destinations-header > h2 {
+  font-size: 3.5rem;
+}
+
+.destination-items {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.destination-image-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.destination-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.destination-image-container h3 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 1rem;
+  color: white;
+  font-size: 1.5rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
