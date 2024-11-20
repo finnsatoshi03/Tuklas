@@ -1,6 +1,8 @@
 .vision {
   max-width: 1200px;
   margin: 5rem auto;
+  position: relative;
+  overflow: hidden;
 }
 
 .vision > h2 {
@@ -90,4 +92,75 @@
   .province-content-2 {
     grid-template-columns: 1fr;
   }
+}
+
+/* Vision elements (clouds) */
+.vision-element-1,
+.vision-element-2,
+.vision-element-3,
+.vision-element-4,
+.vision-element-5,
+.vision-element-6,
+.vision-element-7,
+.vision-element-8,
+.vision-element-9 {
+  position: absolute;
+  z-index: -1;
+  transition: transform 0.3s ease-out;
+}
+
+/* Right side elements - start visible */
+.vision-element-1 {
+  top: 5%;
+  right: 30px;
+  width: 150px;
+}
+
+.vision-element-2 {
+  top: 15%;
+  right: 50px;
+  width: 200px;
+}
+
+.vision-element-3 {
+  top: 25%;
+  right: 40px;
+  width: 120px;
+}
+
+.vision-element-4 {
+  top: 45%;
+  right: 45px;
+  width: 180px;
+}
+
+.vision-element-5 {
+  top: 65%;
+  right: 35px;
+  width: 160px;
+}
+
+/* Left side elements - start visible */
+.vision-element-6 {
+  top: 10%;
+  left: 40px;
+  width: 250px;
+}
+
+.vision-element-7 {
+  top: 25%;
+  left: 50px;
+  width: 180px;
+}
+
+.vision-element-8 {
+  top: 45%;
+  left: 30px;
+  width: 220px;
+}
+
+.vision-element-9 {
+  top: 65%;
+  left: 35px;
+  width: 190px;
 }
