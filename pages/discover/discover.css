@@ -35,12 +35,15 @@
 .discover-content {
   position: relative;
   z-index: 2;
-  padding: 10rem 0;
+  padding: 10rem 0 8rem 0;
 }
 
 .discover-content h2 {
+  font-family: var(--font-cursive);
+  opacity: 0.4;
+  line-height: 1.2;
   font-size: 3rem;
-  color: var(--color-dark-blue);
+  /* color: var(--color-dark-blue); */
   margin: 0;
   font-weight: bold;
 }
