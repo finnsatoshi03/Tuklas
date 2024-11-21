@@ -6,6 +6,7 @@ import "./pages/history/history.js";
 document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector("header");
   const exploreBtn = document.querySelector(".explore-btn");
+  const hamburger = document.querySelector(".hamburger");
   const navItems = document.querySelector(".nav-items");
   const navItemsA = document.querySelectorAll(".nav-items a");
   const destinationItems = document.querySelectorAll(".destination-item");
@@ -41,11 +42,13 @@ document.addEventListener("DOMContentLoaded", () => {
       header.classList.add("scrolled");
       exploreBtn.classList.add("scrolled");
       navItems.classList.add("scrolled");
+      hamburger.classList.add("scrolled");
     } else {
       // Remove scroll state classes
       header.classList.remove("scrolled");
       exploreBtn.classList.remove("scrolled");
       navItems.classList.remove("scrolled");
+      hamburger.classList.remove("scrolled");
     }
   });
 
@@ -89,20 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  if (exploreBtn) {
-    exploreBtn.addEventListener("click", () => {
-      const aboutSection = document.querySelector(".about.container");
-      if (aboutSection) {
-        // Update URL hash
-        history.pushState(null, "", "#about");
-
-        aboutSection.scrollIntoView({
-          behavior: "smooth",
-        });
-      }
-    });
-  }
-
   destinationItems.forEach((item) => {
     item.addEventListener("click", () => {
       const destinationType = item
@@ -121,6 +110,20 @@ document.addEventListener("DOMContentLoaded", () => {
       if (destinationPages[destinationType]) {
         window.location.href = destinationPages[destinationType];
       }
+    });
+  });
+
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navItems.classList.toggle("active");
+  });
+
+  // Close mobile menu when a link is clicked
+  const navLinks = document.querySelectorAll(".nav-items a");
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      hamburger.classList.remove("active");
+      navItems.classList.remove("active");
     });
   });
 });

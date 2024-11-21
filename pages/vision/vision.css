@@ -197,7 +197,34 @@
     grid-template-columns: 1fr;
     padding-bottom: 10rem;
   }
+
   .province-content-2 .vision-img-2 {
     grid-area: auto;
+  }
+
+  .vision-element-1,
+  .vision-element-2,
+  .vision-element-3,
+  .vision-element-4,
+  .vision-element-5,
+  .vision-element-6,
+  .vision-element-7,
+  .vision-element-8,
+  .vision-element-9 {
+    width: 30%;
+  }
+}
+
+@media (max-width: 480px) {
+  .vision-element-1,
+  .vision-element-2,
+  .vision-element-3,
+  .vision-element-4,
+  .vision-element-5,
+  .vision-element-6,
+  .vision-element-7,
+  .vision-element-8,
+  .vision-element-9 {
+    width: 25%;
   }
 }

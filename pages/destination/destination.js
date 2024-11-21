@@ -248,4 +248,19 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   });
+
+  const hamburger = document.querySelector(".hamburger");
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navItems.classList.toggle("active");
+  });
+
+  // Close mobile menu when a link is clicked
+  const navLinks = document.querySelectorAll(".nav-items a");
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      hamburger.classList.remove("active");
+      navItems.classList.remove("active");
+    });
+  });
 });

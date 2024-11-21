@@ -8,20 +8,17 @@ header {
   transition: background-color 0.3s ease, padding 0.3s ease;
 }
 
-.container {
-  padding-top: 5rem; /* Add padding to prevent content from being hidden behind fixed header */
-}
-
 header > nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 0;
+  padding: 1rem 5%;
   transition: padding 0.3s ease;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.logo,
-.nav-items {
+.logo {
   color: white;
   transition: color 0.3s ease;
 }
@@ -30,6 +27,14 @@ header > nav {
   display: flex;
   align-items: center;
   gap: 2rem;
+  list-style: none;
+  transition: color 0.3s ease;
+}
+
+.nav-items a {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s ease;
 }
 
 .explore-btn {
@@ -38,6 +43,27 @@ header > nav {
   border-radius: 2rem;
   font-weight: 500;
   transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  color: black;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: var(--color-yellow);
+  margin: 3px 0;
+  transition: 0.4s;
+}
+.hamburger.scrolled .bar {
+  background-color: var(--color-dark-blue);
 }
 
 /* Scrolled state styles */
@@ -47,7 +73,7 @@ header.scrolled {
 }
 
 header.scrolled > nav {
-  padding: 0.5rem 0;
+  padding: 0.5rem 5%;
 }
 
 header.scrolled .logo,
@@ -55,9 +81,85 @@ header.scrolled .nav-items {
   color: var(--color-dark-blue);
 }
 
+header.scrolled .nav-items a {
+  color: var(--color-dark-blue);
+}
+
 header.scrolled .explore-btn {
   background-color: var(--color-yellow);
   color: var(--color-dark-blue);
+}
+
+nav > div > a:first-of-type .explore-btn {
+  display: none;
+}
+
+nav > a:last-of-type .explore-btn {
+  display: block;
+}
+
+.explore-burger {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  nav > a:last-of-type {
+    display: none;
+  }
+
+  nav > div > a:first-of-type .explore-btn {
+    display: block;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-items {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    flex-direction: column;
+    color: var(--color-dark-blue) !important;
+    background-color: var(--color-primary);
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+    padding: 100px 0;
+    height: 100vh;
+    z-index: 1000;
+  }
+
+  .nav-items a {
+    color: var(--color-dark-blue);
+  }
+
+  .nav-items.active {
+    left: 0;
+  }
+
+  .nav-items li {
+    margin: 1rem 0;
+  }
+
+  .explore-btn {
+    background-color: var(--color-yellow);
+  }
+
+  .hamburger.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
 }
 
 /* Responsive adjustments */
