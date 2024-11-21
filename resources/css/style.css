@@ -37,6 +37,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 img,
@@ -97,10 +99,12 @@ a {
   isolation: isolate;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 .container {
   position: relative;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
 }
 
 .home {

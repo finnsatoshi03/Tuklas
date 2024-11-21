@@ -49,6 +49,7 @@
   object-fit: cover;
   transition: opacity 0.3s ease-in-out;
   cursor: pointer;
+  border: 2px solid var(--color-yellow);
 }
 
 .hover-image {
