@@ -224,15 +224,18 @@ function resizeSVG() {
 window.addEventListener("resize", resizeSVG);
 resizeSVG();
 
-// Function to add tooltip to all paths
 function addTooltipToPath(pathId) {
   const path = document.getElementById(pathId);
-
-  // Ensure the path exists
   if (!path) return;
 
-  path.addEventListener("mousemove", (e) => {
-    // Convert camelCase or hyphenated IDs to title case
+  // Use touchstart and touchend for mobile, mouseenter and mouseleave for desktop
+  const startEvent = "ontouchstart" in window ? "touchstart" : "mouseenter";
+  const endEvent = "ontouchend" in window ? "touchend" : "mouseleave";
+
+  path.addEventListener(startEvent, (e) => {
+    // Prevent default touch behavior
+    e.preventDefault();
+
     const formattedName = pathId
       .split("-")
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
@@ -241,14 +244,24 @@ function addTooltipToPath(pathId) {
     tooltip.innerHTML = `
       <h3 style="margin: 0; font-weight: bold; font-size: 16px;">${formattedName}</h3>
     `;
-
     tooltip.style.display = "block";
-    tooltip.style.left = `${e.pageX + 10}px`;
-    tooltip.style.top = `${e.pageY + 10}px`;
+
+    // Use clientX/Y for touch events, pageX/Y for mouse events
+    const clientX = e.touches ? e.touches[0].clientX : e.pageX;
+    const clientY = e.touches ? e.touches[0].clientY : e.pageY;
+
+    tooltip.style.left = `${clientX + 10}px`;
+    tooltip.style.top = `${clientY + 10}px`;
   });
 
-  path.addEventListener("mouseout", () => {
+  path.addEventListener(endEvent, () => {
     tooltip.style.display = "none";
+  });
+
+  // Add click/tap event handler
+  path.addEventListener("click", (e) => {
+    e.preventDefault(); // Prevent default link behavior if applicable
+    openBarangaySidebar(pathId);
   });
 }
 
