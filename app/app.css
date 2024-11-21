@@ -1,0 +1,37 @@
+#base {
+  max-width: 100%;
+  max-height: calc(100vh - 8rem);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  cursor: grab;
+}
+#base:active {
+  cursor: grabbing;
+}
+
+#tooltip {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  display: none;
+  max-width: 250px;
+  pointer-events: none;
+  z-index: 1000;
+}
+#base {
+  cursor: pointer;
+}
+svg path:not(#taguig) {
+  transition: fill 0.3s ease, opacity 0.3s ease, stroke 0.3s ease;
+  stroke: #eee;
+  fill: #00394f;
+  stroke-width: 0.25;
+}
+
+svg path:not(#taguig):hover {
+  fill: rgba(173, 216, 230);
+  cursor: pointer;
+}
