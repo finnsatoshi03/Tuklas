@@ -99,6 +99,10 @@ document.addEventListener("mouseup", () => {
 
 // Touch support for mobile
 let touchZoom = false;
+let initialPinchDistance = 0;
+let initialZoom = 1;
+let initialTouchX = 0;
+let initialTouchY = 0;
 
 svgElement.addEventListener("touchstart", (e) => {
   if (e.touches.length === 2) {
@@ -111,10 +115,17 @@ svgElement.addEventListener("touchstart", (e) => {
       touch1.pageY - touch2.pageY
     );
     initialZoom = currentZoom;
-  } else if (e.touches.length === 1 && !touchZoom) {
+
+    // Calculate center point for zoom
+    const centerX = (touch1.pageX + touch2.pageX) / 2;
+    const centerY = (touch1.pageY + touch2.pageY) / 2;
+    const rect = svgElement.getBoundingClientRect();
+    const mouseX = centerX - rect.left;
+    const mouseY = centerY - rect.top;
+  } else if (e.touches.length === 1) {
     // Pan
-    startX = e.touches[0].clientX;
-    startY = e.touches[0].clientY;
+    initialTouchX = e.touches[0].clientX;
+    initialTouchY = e.touches[0].clientY;
     isPanning = true;
   }
 });
@@ -130,11 +141,37 @@ svgElement.addEventListener("touchmove", (e) => {
     );
     const pinchFactor = currentPinchDistance / initialPinchDistance;
     const newZoom = initialZoom * pinchFactor;
+
+    // Calculate center point for zoom
+    const centerX = (touch1.pageX + touch2.pageX) / 2;
+    const centerY = (touch1.pageY + touch2.pageY) / 2;
+    const rect = svgElement.getBoundingClientRect();
+    const mouseX = centerX - rect.left;
+    const mouseY = centerY - rect.top;
+
+    // Zoom towards the center point between two touch points
     currentZoom = Math.max(minZoom, Math.min(maxZoom, newZoom));
+    const zoomFactor = currentZoom / initialZoom;
+
+    translateX = mouseX - (mouseX - translateX) * zoomFactor;
+    translateY = mouseY - (mouseY - translateY) * zoomFactor;
+
     updateTransform();
   } else if (e.touches.length === 1 && !touchZoom) {
     // Pan
-    pan(e.touches[0].clientX, e.touches[0].clientY);
+    const currentTouchX = e.touches[0].clientX;
+    const currentTouchY = e.touches[0].clientY;
+
+    const deltaX = currentTouchX - initialTouchX;
+    const deltaY = currentTouchY - initialTouchY;
+
+    translateX += deltaX;
+    translateY += deltaY;
+
+    initialTouchX = currentTouchX;
+    initialTouchY = currentTouchY;
+
+    updateTransform();
   }
 });
 
