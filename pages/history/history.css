@@ -23,6 +23,12 @@
   font-size: 3.5rem;
   color: var(--color-yellow);
 }
+.history-header h2:hover {
+  cursor: pointer;
+  background: linear-gradient(to bottom, var(--color-yellow) 55%, red 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 .history-header p {
   width: 400px;

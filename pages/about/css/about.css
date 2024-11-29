@@ -51,6 +51,17 @@
   color: var(--color-yellow);
 }
 
+.about-content h2:hover {
+  cursor: pointer;
+  background: linear-gradient(
+    to right,
+    var(--color-dark-blue) 0%,
+    var(--color-yellow) 40%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .about-content p {
   margin-bottom: 1rem;
 }

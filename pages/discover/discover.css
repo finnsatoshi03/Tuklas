@@ -47,6 +47,17 @@
   margin: 0;
   font-weight: bold;
 }
+.discover-content h2:hover {
+  cursor: pointer;
+  background: radial-gradient(
+    circle at center,
+    var(--color-dark-blue) 5%,
+    red 30%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 1;
+}
 
 @media (max-width: 768px) {
   .discover-content h2 {

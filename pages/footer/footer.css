@@ -15,6 +15,17 @@
   -webkit-background-clip: text;
   color: transparent;
 }
+.footer-content-1 h2:hover {
+  cursor: pointer;
+  background: linear-gradient(
+    to right,
+    var(--color-yellow) 0%,
+    var(--color-dark-blue) 67%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .footer-content-1 div {
   display: flex;
   align-items: center;

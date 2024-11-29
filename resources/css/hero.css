@@ -59,6 +59,13 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   transition: all 0.5s ease;
 }
+.hero-content h1:hover {
+  background: radial-gradient(circle at 50% -40%, #db2428 0%, #ffdf37 60%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+  cursor: pointer;
+}
 
 .explore-now-btn {
   display: inline-block;

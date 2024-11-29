@@ -16,6 +16,13 @@
   color: red;
 }
 
+.why-content > h2:hover {
+  cursor: pointer;
+  background: linear-gradient(to right, var(--color-yellow) 0%, red 67%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .why-content > p {
   width: 75%;
 }
